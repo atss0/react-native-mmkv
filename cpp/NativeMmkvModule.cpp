@@ -6,9 +6,9 @@
 //
 
 #include "NativeMmkvModule.h"
+#include "MMKV.h"
 #include "MmkvHostObject.h"
 #include "MmkvLogger.h"
-#include "MmkvTypes.h" // IWYU pragma: keep
 
 namespace facebook::react {
 
@@ -23,9 +23,9 @@ bool NativeMmkvModule::initialize(jsi::Runtime& runtime, std::string basePath) {
   MmkvLogger::log("RNMMKV", "Initializing MMKV at %s...", basePath.c_str());
 
 #ifdef DEBUG
-  MMKVLogLevel logLevel = mmkv::MMKVLogDebug;
+  MMKVLogLevel logLevel = MMKVLogDebug;
 #else
-  MMKVLogLevel logLevel = mmkv::MMKVLogWarning;
+  MMKVLogLevel logLevel = MMKVLogWarning;
 #endif
 
   MMKV::initializeMMKV(basePath, logLevel);
